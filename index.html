@@ -434,7 +434,8 @@
     <script>
         document.getElementById('randomButton').addEventListener('click', function() 
         {
-        document.getElementById('password').value = BigInt(Math.floor(Math.random() * 1000000000000000000));
+        var pword = BigInt(Math.floor(Math.random() * 1000000000000000000));
+        document.getElementById('password').value = pword;
         var message = document.getElementById('message').value;
             console.log(message);
             
