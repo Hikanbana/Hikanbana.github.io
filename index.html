@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyWebsite</title>
+    <style>
+    .FS {
+            font-size: 72px;
+            text-align: center;
+        }
+    .right {
+        position: absolute;
+        right: 1000px;
+        top: 767px;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="FS">Wellow come to my website</h1>
+        <div>
+            <label for="password">password:</label><br>
+            <button id="randomButton">Random</button>
+            <textarea id="password" name="password" rows="1" cols="25" required></textarea><br><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+        </div>
+        <div>
+            <label for="display">Message Display:</label><br>
+            <textarea id="display" rows="4" cols="50" readonly></textarea><br><br>
+        </div>
+    </header>
+    <script>
+        var char_dict = {};
+        var char_list = [];
+        var char_ex = [
+    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", " ", ".", "/",
+    "ก", "ข", "ฃ", "ค", "ฅ", "ฆ", "ง", "จ", "ฉ", "ช", "ซ", "ฌ", "ญ", 
+    "ฎ", "ฏ", "ฐ", "ฑ", "ฒ", "ณ", "ด", "ต", "ถ", "ท", "ธ", "น", "บ", 
+    "ป", "ผ", "ฝ", "พ", "ฟ", "ภ", "ม", "ย", "ร", "ล", "ว", "ศ", "ษ", 
+    "ส", "ห", "ฬ", "อ", "ฮ",
+    "ะ", "ั", "า", "ำ", "ิ", "ี", "ึ", "ื", "ุ", "ู", "เ", "แ", "โ", "ใ", "ไ", "ๅ",
+    "่", "้", "๊", "๋", "็"
+        ];
+        for (var j = 0; j < char_ex.length; j++) 
+            {
+              char_list.push(char_ex[j]);
+            }
+
+        for (var char = 65; char <= 90; char++) {
+            char_dict[String.fromCharCode(char)] = (char - 64) * 2 - 1;
+            char_dict[String.fromCharCode(char + 32)] = (char - 64) * 2;
+            char_list.push(String.fromCharCode(char));
+            char_list.push(String.fromCharCode(char + 32));
+        }
+
+        var lnum = [0,1,2,3,4,5];
+        var lnum2 = [];
+        lnum.forEach(a => 
+        {
+            let decka = [...lnum];  // Copy the original array
+            let indexA = decka.indexOf(a);
+            if (indexA > -1) decka.splice(indexA, 1);
+            decka.forEach(b => 
+            {
+                let deckb = [...decka];
+                let indexB = deckb.indexOf(b);
+                if (indexB > -1) deckb.splice(indexB, 1);
+                deckb.forEach(c => 
+                {
+                    let deckc = [...deckb];
+                    let indexC = deckc.indexOf(c);
+                    if (indexC > -1) deckc.splice(indexC, 1);
+                    deckc.forEach(d => 
+                    {
+                        let deckd = [...deckc];
+                        let indexD = deckd.indexOf(d);
+                        if (indexD > -1) deckd.splice(indexD, 1);
+                        deckd.forEach(e => 
+                        {
+                            let f = [a, b, c, d, e];
+                            lnum2.push(f);
+                        });
+                    });
+                });
+            });
+        });
+
+        console.log(char_list);
+        console.log(lnum2);
+
+    </script>
+    <script>
+        function shuffle1(input) 
+        {
+            var a1 = [];
+            var a2 = [];
+            var a3 = [];
+            var a4 = [];
+            var a5 = [];
+            var a6 = [];
+            var a7 = [];
+            var n = 0;
+            
+            for (var i = 0; i < input.length; i++) {
+                n++;
+                if (n === 1) a1.push(input[i]);
+                if (n === 2) a2.push(input[i]);
+                if (n === 3) a3.push(input[i]);
+                if (n === 4) a4.push(input[i]);
+                if (n === 5) a5.push(input[i]);
+                if (n === 6) a6.push(input[i]);
+                if (n === 7) {
+                    a7.push(input[i]);
+                    n = 0;
+                }
+            }
+            
+            var a = a2.concat(a7, a4, a6, a1, a3, a5);
+            return a;
+        }
+        
+        function shuffle2(input) 
+        {
+            var a1 = [];
+            var a2 = [];
+            var a3 = [];
+            var a4 = [];
+            var a5 = [];
+            var a6 = [];
+            var a7 = [];
+            var n = 0;
+            
+            for (var i = 0; i < input.length; i++) {
+                n++;
+                if (n === 1) a1.push(input[i]);
+                if (n === 2) a2.push(input[i]);
+                if (n === 3) a3.push(input[i]);
+                if (n === 4) a4.push(input[i]);
+                if (n === 5) a5.push(input[i]);
+                if (n === 6) a6.push(input[i]);
+                if (n === 7) {
+                    a7.push(input[i]);
+                    n = 0;
+                }
+            }
+            
+            var a = a3.concat(a5, a2, a1, a7, a4, a6);
+            return a;
+        }
+
+        function shuffle3(input) 
+        {
+            var a1 = [];
+            var a2 = [];
+            var a3 = [];
+            var a4 = [];
+            var a5 = [];
+            var a6 = [];
+            var a7 = [];
+            var n = 0;
+            
+            for (var i = 0; i < input.length; i++) {
+                n++;
+                if (n === 1) a1.push(input[i]);
+                if (n === 2) a2.push(input[i]);
+                if (n === 3) a3.push(input[i]);
+                if (n === 4) a4.push(input[i]);
+                if (n === 5) a5.push(input[i]);
+                if (n === 6) a6.push(input[i]);
+                if (n === 7) {
+                    a7.push(input[i]);
+                    n = 0;
+                }
+            }
+            
+            var a = a7.concat(a4, a6, a5, a1, a3, a2);
+            return a;
+        }
+        
+        function cut(input) 
+        {
+            var a1 = [];
+            var a2 = [];
+            var n = 0;
+            
+            for (var i = 0; i < input.length; i++) {
+                n++;
+                if (n === 1) a1.push(input[i]);
+                if (n === 2) {
+                    a2.push(input[i]);
+                    n = 0;
+                }
+            }
+            
+            return [a1, a2];
+        }
+
+        function shufflemix(input)
+        {
+            var x = char_list;
+            for (var r = 0; r < input[0]; r++) 
+            {
+                x = shuffle1(x);
+                x = shuffle2(x);
+                x = shuffle3(x);
+            }
+            for (var r = 0; r < input[1]; r++) 
+            {
+                x = shuffle1(x);
+                x = shuffle3(x);
+                x = shuffle2(x);
+            }
+            for (var r = 0; r < input[2]; r++) 
+            {
+                x = shuffle2(x);
+                x = shuffle1(x);
+                x = shuffle3(x);
+            }
+            for (var r = 0; r < input[3]; r++) 
+            {
+                x = shuffle2(x);
+                x = shuffle3(x);
+                x = shuffle1(x);
+            }
+            for (var r = 0; r < input[4]; r++) 
+            {
+                x = shuffle3(x);
+                x = shuffle1(x);
+                x = shuffle2(x);
+            }
+            for (var r = 0; r < input[5]; r++) 
+            {
+                x = shuffle3(x);
+                x = shuffle2(x);
+                x = shuffle1(x);
+            }
+            
+            return x ;
+        }
+
+        function shufflepls(x,num,num2)
+        {
+
+            var list_number = lnum2[Math.floor(num2/38000)] ;
+            if (num == list_number[0])
+            {
+                x = shuffle1(x);
+                x = shuffle2(x);
+                x = shuffle3(x);
+            }
+            else if(num == list_number[1] )
+            {
+                x = shuffle1(x);
+                x = shuffle3(x);
+                x = shuffle2(x);
+            }
+            else if(num == list_number[2] )
+            {
+                x = shuffle2(x);
+                x = shuffle1(x);
+                x = shuffle3(x);
+            }
+            else if(num == list_number[3] )
+            {
+                x = shuffle2(x);
+                x = shuffle3(x);
+                x = shuffle1(x);
+            }
+            else if(num == list_number[4] )
+            {
+                x = shuffle3(x);
+                x = shuffle2(x);
+                x = shuffle1(x);
+            }
+            else 
+            {
+                x = shuffle3(x);
+                x = shuffle1(x);
+                x = shuffle2(x);
+            }
+
+            return x ;
+        }
+
+        function processpassword(input) 
+        {
+
+            let l = input.split(''); // Split input string into array of characters
+            let n = 18 - l.length;
+            if (n !== 0) 
+            {
+                if (n > 0) {
+                    let n1 = [];
+                    for (let i = 0; i < n; i++) 
+                    {
+                        n1.push('0'); // Add leading zeros
+                    }
+                    n1 = n1.concat(l); // Append the original characters
+                    l = [...n1]; // Copy to l
+
+                    let l2 = [];
+                    for (let i = 1; i <= 6; i++) 
+                    {
+                        let x = l[(i * 3) - 3] + l[(i * 3) - 2] + l[(i * 3) - 1];
+                        l2.push(parseInt(x, 10)); // Convert to integer
+                    }
+                    l = [...l2]; // Copy to l
+                    return l ;
+                    // document.getElementById("output").innerText = l.join(", "); 
+                } else {
+                    document.getElementById('display').value = "The password must not exceed 18 numbers.";
+                    l = -1 ;
+                    return l ;
+                }
+            }
+            else
+            {
+             return l ;
+            }
+        }
+
+        function code(input1,input2)
+        {
+            var char_list1,char_list2 ;
+            
+            var x1 = cut(shufflemix(input2));
+            char_list1 = x1[0];
+            char_list2 = x1[1];
+
+            var input = input1;
+            var x = input.split('');
+            var out = [];
+            var stop = 0;
+            var num = 0 ;
+            var num2 = 1 ;
+
+            for (var m = 0; m < x.length; m++) 
+            {
+                var ch = char_list1.concat(char_list2);
+                ch = shufflepls(ch,num,num2)
+                if (num == 5)
+                {
+                    num = 0 ;
+                }
+                else
+                {
+                    num++;   
+                }
+                if (num2/38000 > 719)
+                {
+                    num2 = 1 ;
+                }
+                else
+                {
+                    num2++;   
+                }
+                
+                var ch1 = cut(ch);
+                char_list1 = ch1[0];
+                char_list2 = ch1[1];
+                stop = 0;
+ 
+                var n = -1;
+                for (var i = 0; i < char_list1.length; i++) 
+                {
+                    n++;
+                    if (x[m] == char_list1[i]) 
+                    {
+                        out.push(char_list2[n]);
+                        stop = 1;
+                        break;
+                    }
+                }
+                if (stop != 1) 
+                {
+                    n = -1;
+                    for (var j = 0; j < char_list2.length; j++) 
+                    {
+                        n++;
+                        if (x[m] == char_list2[j])
+                        {
+                        out.push(char_list1[n]);
+                        stop = 2;
+                        break;
+                        }
+                    }
+                }
+                if (stop != 1 && stop != 2)
+                {
+                    out.push("#"); 
+                }
+
+            }
+            var out1 = out.join("");
+            return out1 ;
+        }
+    </script>
+    <script>
+        document.getElementById('message').addEventListener('input', function() 
+        {
+            var message = document.getElementById('message').value;
+            console.log(message);
+            
+            var password = document.getElementById('password').value;
+            console.log(password);
+
+            var p = processpassword(password) ;
+
+            if (p != -1)
+            {
+                document.getElementById('display').value = code(message,p);
+            }
+        });
+    </script>
+    <script>
+        document.getElementById('password').addEventListener('input', function() 
+        {
+            var message = document.getElementById('message').value;
+            console.log(message);
+            
+            var password = document.getElementById('password').value;
+            console.log(password);
+
+            var p = processpassword(password) ;
+
+            if (p != -1)
+            {
+                document.getElementById('display').value = code(message,p);
+            }
+        });
+    </script>
+    <script>
+        document.getElementById('randomButton').addEventListener('click', function() 
+        {
+        document.getElementById('password').value = BigInt(Math.floor(Math.random() * 1000000000000000000));
+        var message = document.getElementById('message').value;
+            console.log(message);
+            
+            var password = document.getElementById('password').value;
+            console.log(password);
+
+            var p = processpassword(password) ;
+
+            if (p != -1)
+            {
+                document.getElementById('display').value = code(message,p);
+            }
+        });
+    </script>
+</body>
+</html>
